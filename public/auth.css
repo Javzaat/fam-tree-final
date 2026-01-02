@@ -1,0 +1,296 @@
+.auth-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(3px);
+  z-index: 99;
+}
+
+.auth-modal {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(480px, 92vw);
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  z-index: 100;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.auth-close {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  font-size: 26px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.auth-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.tab-btn {
+  border: 1px solid #ddd;
+  padding: 6px 14px;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.tab-btn.active {
+  background: #fff8ee;
+  border-color: #e9cbaa;
+}
+
+.auth-form {
+  display: grid;
+  gap: 12px;
+}
+
+.auth-form.hidden {
+  display: none;
+}
+
+.auth-form input {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.cta.full {
+  width: 100%;
+  background: #6b5b4b;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+}
+
+.oauth.fb {
+  background: #1877f2;
+  color: white;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+}
+/* ================== SUCCESS TOAST ================== */
+
+.toast-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(2px);
+  opacity: 0;
+  transition: opacity .25s ease;
+  z-index: 900;
+}
+
+.toast-backdrop.show {
+  opacity: 1;
+}
+
+.toast-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  background: #fff;
+  padding: 26px 36px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  opacity: 0;
+  scale: 0.9;
+  transition: opacity .25s ease, scale .25s ease;
+  z-index: 1000;
+}
+
+.toast-box.show {
+  opacity: 1;
+  scale: 1;
+}
+/* ------- SIGNUP SUCCESS POPUP ------- */
+
+.success-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(2px);
+  z-index: 200;
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+
+.success-backdrop.show {
+  opacity: 1;
+}
+
+.success-modal {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(.85);
+  background: #fff;
+  padding: 22px 28px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.12);
+  z-index: 201;
+  opacity: 0;
+  transition: opacity .25s ease, transform .25s ease;
+}
+
+.success-modal.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.success-box p {
+  margin: 0 0 16px 0;
+  text-align: center;
+  color: var(--txt);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.success-btn {
+  background: var(--brand);
+  color: #fff;
+  border: 0;
+  padding: 10px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 15px;
+}
+
+.success-btn:hover {
+  filter: brightness(0.95);
+}
+
+.auth-backdrop,
+.toast-backdrop,
+.success-backdrop {
+  pointer-events: none;
+}
+
+.auth-backdrop.show,
+.toast-backdrop.show,
+.success-backdrop.show {
+  pointer-events: all;
+}
+
+/* =============================
+   DARK MODE OVERRIDES (auth.css)
+   paste at the very bottom
+   ============================= */
+
+body.dark .auth-backdrop,
+body.dark .success-backdrop,
+body.dark .toast-backdrop {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+/* AUTH MODAL */
+body.dark .auth-modal {
+  background: rgba(16, 31, 53, 0.98);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  color: var(--text);
+}
+
+body.dark .auth-close {
+  color: var(--text);
+  opacity: 0.9;
+}
+body.dark .auth-close:hover {
+  opacity: 1;
+}
+
+/* Tabs */
+body.dark .tab-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  color: var(--txt);
+}
+
+body.dark .tab-btn.active {
+  background: rgba(230, 180, 92, 0.14);
+  border-color: rgba(230, 180, 92, 0.35);
+  color: var(--text);
+}
+
+/* Inputs */
+body.dark .auth-form input {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+body.dark .auth-form input::placeholder {
+  color: rgba(230, 237, 246, 0.55);
+}
+
+body.dark .auth-form input:focus {
+  outline: 3px solid rgba(230, 180, 92, 0.25);
+  outline-offset: 2px;
+  border-color: rgba(230, 180, 92, 0.35);
+}
+
+/* CTA full (Sign in / Sign up button) */
+body.dark .cta.full {
+  background: rgba(230, 180, 92, 0.16);
+  border: 1px solid rgba(230, 180, 92, 0.35);
+  color: var(--brand);
+}
+
+body.dark .cta.full:hover {
+  filter: brightness(1.05);
+  background: rgba(230, 180, 92, 0.22);
+}
+
+/* OAuth Facebook (optional: арай даруухан болгоё) */
+body.dark .oauth.fb {
+  filter: brightness(0.95);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.35);
+}
+
+/* TOAST */
+body.dark .toast-box {
+  background: rgba(16, 31, 53, 0.98);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  color: var(--text);
+}
+
+/* SUCCESS MODAL */
+body.dark .success-modal {
+  background: rgba(16, 31, 53, 0.98);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  color: var(--text);
+}
+
+body.dark .success-box p {
+  color: var(--txt);
+}
+
+body.dark .success-btn {
+  background: rgba(230, 180, 92, 0.16);
+  border: 1px solid rgba(230, 180, 92, 0.35);
+  color: var(--brand);
+}
+
+body.dark .success-btn:hover {
+  filter: brightness(1.05);
+  background: rgba(230, 180, 92, 0.22);
+}
