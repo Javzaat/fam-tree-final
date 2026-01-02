@@ -16,10 +16,9 @@ body {
   color: var(--text);
 }
 
-/* ===== PAGE STRUCTURE ===== */
 
 .tree-page {
-  height: calc(100vh - 64px); /* header-ийн өндөр */
+  height: calc(100vh - 64px); 
 }
 .tree-toolbar {
   max-width: 1200px;
@@ -74,7 +73,6 @@ body {
   object-fit: cover;
 }
 
-/* ===== TREE LAYOUT ===== */
 .tree-layout {
   width: 100%;
   height: 100%;
@@ -158,7 +156,7 @@ body.dark .tree-zoom {
   }
 
   .tree-page {
-    padding-top: 0;   /* ✅ header доорх зайг авлаа */
+    padding-top: 0;   
   }
   .zoom-btn {
     width: 38px;
@@ -172,7 +170,6 @@ body.dark .tree-zoom {
   }
 }
 
-/* Mobile */
 @media (max-width: 640px) {
   .tree-zoom {
     right: 8px;
@@ -211,7 +208,6 @@ body.dark .tree-zoom {
   z-index: 2;
 }
 
-/* ===== FAMILY CARD ===== */
 
 .family-card {
   position: absolute;
@@ -245,7 +241,6 @@ body.dark .family-card {
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
 }
 
-/* Gender frame */
 .family-card.male {
   border-color: var(--male);
 }
@@ -253,7 +248,6 @@ body.dark .family-card {
   border-color: var(--female);
 }
 
-/* Top buttons */
 .node-btn {
   position: absolute;
   width: 26px;
@@ -278,7 +272,6 @@ body.dark .family-card {
   right: 8px;
 }
 
-/* Up arrow */
 .triangle-up {
   width: 0;
   height: 0;
@@ -287,7 +280,6 @@ body.dark .family-card {
   border-bottom: 11px solid #ff5a3c;
 }
 
-/* Plus icon */
 .node-btn-add::before,
 .node-btn-add::after {
   content: "";
@@ -304,7 +296,6 @@ body.dark .family-card {
   height: 12px;
 }
 
-/* Avatar */
 .card-avatar {
   margin-top: 10px;
   margin-bottom: 6px;
@@ -326,7 +317,6 @@ body.dark .family-card {
   border-color: var(--female);
 }
 
-/* Placeholder person icon */
 .avatar-icon {
   display: block;
   width: 32px;
@@ -359,7 +349,6 @@ body.dark .family-card {
   border-bottom: none;
 }
 
-/* Name & age */
 .card-name {
   margin-top: 4px;
   text-align: center;
@@ -378,23 +367,18 @@ body.dark .card-age {
   color: #c3b09a;
 }
 
-/* Collapsed visual (ancestors folded) */
 .family-card.collapse-up {
   opacity: 0.7;
 }
 
-/* ===== ADD MENU ===== */
 
 .add-menu {
   position: fixed;
   z-index: 99999;
-
-  display: flex;              /* 🔥 заавал */
-  flex-direction: column;     /* 🔥 босоо */
+  display: flex;              
+  flex-direction: column;     
   gap: 6px;
-
-  width: max-content;         /* 🔥 суналтаас хамгаална */
-
+  width: max-content;         
   background: var(--card);
   border: 1px solid var(--border);
   padding: 8px 10px;
@@ -402,7 +386,7 @@ body.dark .card-age {
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
 }
 .add-pill {
-  display: block;   /* 🔥 ингэхгүй бол нэг мөр болдог */
+  display: block;   
   white-space: nowrap;
 }
 
@@ -428,8 +412,6 @@ body.dark .add-pill {
   background: #2c2118;
   color: #f9f3eb;
 }
-
-/* ===== PERSON MODAL ===== */
 
 .person-backdrop {
   position: fixed;
@@ -515,8 +497,6 @@ body.dark .add-pill {
   border-color: #6b5b4b;
 }
 
-/* ===== RESPONSIVE ===== */
-
 @media (max-width: 768px) {
   .tree-root {
     height: 540px;
@@ -553,7 +533,6 @@ body.dark .add-pill {
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
 }
 
-/* close button */
 #profile-close {
   position: absolute;
   top: 16px;
@@ -624,13 +603,11 @@ body.dark .add-pill {
   color: #333;
 }
 
-/* general info grid */
 .profile-section p {
   margin: 6px 0;
   color: #444;
 }
 
-/* achievements */
 #profile-achievements {
   padding-left: 18px;
 }
@@ -638,7 +615,6 @@ body.dark .add-pill {
   margin-bottom: 6px;
 }
 
-/* ================= PROFILE EDIT MODAL ================= */
 
 #profile-edit-backdrop {
   position: fixed;
@@ -669,7 +645,6 @@ body.dark .add-pill {
   margin-bottom: 18px;
 }
 
-/* form layout */
 #profile-edit label {
   display: flex;
   flex-direction: column;
@@ -693,7 +668,6 @@ body.dark .add-pill {
   resize: vertical;
 }
 
-/* save button */
 #profile-edit-save {
   margin-top: 18px;
   padding: 12px 20px;
@@ -709,7 +683,6 @@ body.dark .add-pill {
   opacity: 0.9;
 }
 
-/* close */
 #profile-edit-close {
   position: absolute;
   top: 16px;
@@ -719,8 +692,6 @@ body.dark .add-pill {
   border: none;
   cursor: pointer;
 }
-
-/* ================= MOBILE ================= */
 
 @media (max-width: 640px) {
   .profile-header {
@@ -738,7 +709,6 @@ body.dark .add-pill {
     height: 110px;
   }
 }
-/* PROFILE PHOTO EDIT */
 .profile-photo-edit {
   margin-bottom: 14px;
 }
@@ -798,7 +768,6 @@ body.dark .add-pill {
 .photo-drop{
   background: var(--bg-soft, var(--bg));
 }
-/* ================= SEARCH PANEL ================= */
 
 .search-panel {
   padding: 12px;
@@ -848,22 +817,17 @@ body.dark .add-pill {
 .family-card.dim {
   opacity: 0.35;
 }
-/* ===== SEARCH HIGHLIGHT ===== */
 
-
-/* search hit */
 .family-card.search-hit {
   outline: 3px solid var(--brand);
   box-shadow: 0 0 0 3px rgba(92, 64, 51, 0.25);
   z-index: 10;
 }
 
-/* dim others */
 .family-card.search-dim {
   opacity: 0.25;
   filter: grayscale(1);
 }
-/* ===== Fullscreen Image Viewer ===== */
 .image-viewer {
   position: fixed;
   inset: 0;
@@ -917,7 +881,7 @@ body.dark .add-pill {
   cursor: pointer;
   font-size: 16px;
 }
-/* ===== DELETE CONFIRM MODAL ===== */
+
 .delete-backdrop {
   position: fixed;
   inset: 0;
@@ -934,15 +898,10 @@ body.dark .add-pill {
   z-index: 9999;
 }
 
-/* override hidden attribute */
 .delete-modal[hidden],
 .delete-backdrop[hidden] {
   display: none !important;
 }
-/* ================= WARNING MODAL (FIXED) ================= */
-
-/* ================= WARNING MODAL (FINAL FIX) ================= */
-/* ================= WARNING MODAL ================= */
 
 #warn-backdrop {
   position: fixed;
@@ -960,7 +919,6 @@ body.dark .add-pill {
   z-index: 200001;
 }
 
-/* hidden attribute override */
 #warn-modal[hidden],
 #warn-backdrop[hidden] {
   display: none !important;

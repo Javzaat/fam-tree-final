@@ -111,7 +111,6 @@
   .pay-grid { grid-template-columns: 1fr; }
 }
 
-/* ================= DARK PAYMENT ================= */
 body.dark .payment{
   background: var(--panel);
   border-top: 1px solid var(--border);
@@ -133,7 +132,6 @@ body.dark .pay h3{
   color: var(--brand);
 }
 
-/* байсан hard-coded өнгөнүүдийг дарна */
 body.dark .price{ color: var(--text); }
 body.dark .price .per{ color: var(--txt); }
 body.dark .features li{ color: var(--txt); }

@@ -1,15 +1,15 @@
 // ===============================
-// SIMPLE HASH ROUTER (FULL)
-// Route → Section scroll / Page redirect
+// Энгийн hash router
+// Hash route-оор section руу scroll хийх эсвэл тусдаа хуудас руу шилжих
 // ===============================
 
 function getRoute() {
-  // "#/home" → "/home"
+  // "#/home" зэрэг hash-ийг route болгон буцаана (hash байхгүй бол default "/home")
   return location.hash.replace("#", "") || "/home";
 }
 
 function scrollToSection(route) {
-  // route → section id
+  // Route-ыг section-ийн id-тай зураглаж холбох
   const map = {
     "/home": "family",
     "/what": "what",
@@ -24,6 +24,7 @@ function scrollToSection(route) {
   const el = document.getElementById(sectionId);
   if (!el) return;
 
+  // Тухайн section руу smooth scroll хийнэ
   el.scrollIntoView({
     behavior: "smooth",
     block: "start",
@@ -32,28 +33,28 @@ function scrollToSection(route) {
 
 function onRouteChange() {
   const route = getRoute();
-  console.log("🔀 ROUTE CHANGED:", route);
+  console.log("ROUTE CHANGED:", route);
 
-  // 🔥 SPECIAL ROUTE: FAMILY TREE PAGE
+  // Тусгай route: ургийн модны хуудас руу үсрэх
   if (route === "/tree") {
     window.location.href = "family-tree.html";
     return;
   }
 
-  // Default: scroll inside index.html
+  // Эсрэг тохиолдолд index.html дотор section руу scroll хийнэ
   scrollToSection(route);
 }
 
 // ===============================
-// EVENTS
+// Event-үүд
 // ===============================
 
-// Initial load
+// Анх ачааллах үед route-оо уншаад ажиллуулна
 window.addEventListener("DOMContentLoaded", () => {
   onRouteChange();
 });
 
-// Hash change
+// Hash өөрчлөгдөх бүрт route шинэчилнэ
 window.addEventListener("hashchange", () => {
   onRouteChange();
 });

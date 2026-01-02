@@ -1,5 +1,4 @@
 
-/* ——— Footer ——— */
 .site-footer {
   background: var(--panel);
   border-top: 1px solid var(--border);
@@ -20,7 +19,6 @@
   letter-spacing: 0.2px;
 }
 
-/* ——— Брэнд ——— */
 .foot-brand .logo {
   display: flex;
   align-items: center;
@@ -44,7 +42,6 @@
   max-width: 40ch;
 }
 
-/* ——— Холбоос ——— */
 .foot-nav ul,
 .contact-list {
   list-style: none;
@@ -66,7 +63,6 @@
   color: #3a2a1b;
 }
 
-/* ——— Социал ——— */
 .social {
   display: flex;
   gap: 10px;
@@ -94,7 +90,6 @@
   fill: var(--brand);
 }
 
-/* ——— Доод хэсэг ——— */
 .foot-bottom {
   border-top: 1px solid var(--border);
   display: flex;
@@ -118,7 +113,6 @@
   text-decoration: underline;
 }
 
-/* ——— Responsive ——— */
 @media (max-width: 900px) {
   .footer-grid {
     grid-template-columns: 1fr 1fr;
@@ -129,7 +123,6 @@
     grid-template-columns: 1fr;
   }
 }
-/* ================= DARK FOOTER OVERRIDES ================= */
 body.dark .site-footer{
   background: var(--panel);
   border-top: 1px solid var(--border);
@@ -159,7 +152,6 @@ body.dark .social-link:hover{
 }
 body.dark .social-link svg{ fill: var(--brand); }
 
-/* foot-bottom дээрх #fdf5ed-г дарна */
 body.dark .foot-bottom{
   background: rgba(11,18,32,0.70);
   border-top: 1px solid var(--border);

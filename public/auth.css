@@ -80,7 +80,6 @@
   border: none;
   border-radius: 8px;
 }
-/* ================== SUCCESS TOAST ================== */
 
 .toast-backdrop {
   position: fixed;
@@ -118,7 +117,6 @@
   opacity: 1;
   scale: 1;
 }
-/* ------- SIGNUP SUCCESS POPUP ------- */
 
 .success-backdrop {
   position: fixed;
@@ -189,18 +187,12 @@
   pointer-events: all;
 }
 
-/* =============================
-   DARK MODE OVERRIDES (auth.css)
-   paste at the very bottom
-   ============================= */
-
 body.dark .auth-backdrop,
 body.dark .success-backdrop,
 body.dark .toast-backdrop {
   background: rgba(0, 0, 0, 0.55);
 }
 
-/* AUTH MODAL */
 body.dark .auth-modal {
   background: rgba(16, 31, 53, 0.98);
   border: 1px solid var(--border);
@@ -216,7 +208,6 @@ body.dark .auth-close:hover {
   opacity: 1;
 }
 
-/* Tabs */
 body.dark .tab-btn {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--border);
@@ -229,7 +220,6 @@ body.dark .tab-btn.active {
   color: var(--text);
 }
 
-/* Inputs */
 body.dark .auth-form input {
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid var(--border);
@@ -246,7 +236,6 @@ body.dark .auth-form input:focus {
   border-color: rgba(230, 180, 92, 0.35);
 }
 
-/* CTA full (Sign in / Sign up button) */
 body.dark .cta.full {
   background: rgba(230, 180, 92, 0.16);
   border: 1px solid rgba(230, 180, 92, 0.35);
@@ -258,13 +247,11 @@ body.dark .cta.full:hover {
   background: rgba(230, 180, 92, 0.22);
 }
 
-/* OAuth Facebook (optional: арай даруухан болгоё) */
 body.dark .oauth.fb {
   filter: brightness(0.95);
   box-shadow: 0 10px 22px rgba(0,0,0,0.35);
 }
 
-/* TOAST */
 body.dark .toast-box {
   background: rgba(16, 31, 53, 0.98);
   border: 1px solid var(--border);
@@ -272,7 +259,6 @@ body.dark .toast-box {
   color: var(--text);
 }
 
-/* SUCCESS MODAL */
 body.dark .success-modal {
   background: rgba(16, 31, 53, 0.98);
   border: 1px solid var(--border);

@@ -1,4 +1,3 @@
-/* ========== THEME VARIABLES (LIGHT) ========== */
 :root{
   --bg: #f5efe3;
   --panel: #ffffff;
@@ -6,7 +5,7 @@
 
   --text: #1f1f1f;
   --txt: #6b5b4b;
-  --text-soft: #6b5b4b; /* хэрэгтэй газар ашиглана */
+  --text-soft: #6b5b4b; 
 
   --brand: #5c4033;
   --border: #e5d7c4;
@@ -14,7 +13,6 @@
   --shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
-/* ========== THEME VARIABLES (DARK) ========== */
 body.dark{
   --bg: #0b1220;
   --panel: #0f1a2b;
@@ -30,13 +28,10 @@ body.dark{
   --shadow: 0 14px 44px rgba(0,0,0,0.55);
 }
 
-/* base */
 body{
   background: var(--bg);
   color: var(--text);
 }
-
-
 
 * {
   box-sizing: border-box;
@@ -132,7 +127,7 @@ body {
     clip-path: ellipse(120% 100% at 50% 0%);
   }
 }
-/* ===== THEME TOGGLE BUTTON ===== */
+
 .theme-btn {
   background: var(--card);
   border: 1px solid var(--border);

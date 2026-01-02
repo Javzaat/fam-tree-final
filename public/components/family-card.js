@@ -1,42 +1,48 @@
+// Гэр бүлийн гишүүний картыг дүрслэх custom element
 class FamilyCard extends HTMLElement {
   constructor() {
     super();
+    // Тухайн карттай холбогдох гишүүний өгөгдөл
     this._member = null;
   }
 
+  // Гишүүний өгөгдөл оноох
   set member(data) {
     this._member = data;
     this.render();
   }
 
+  // Element DOM-д холбогдох үед
   connectedCallback() {
     this.style.position = "absolute";
     if (this._member) this.render();
   }
 
+  // Картын харагдах байдал
   render() {
     const m = this._member;
     if (!m) return;
 
-    // ===== ROOT CLASSES =====
+    // Хүйс болон collapse төлвөөс хамаарсан class-ууд
     this.className =
       "family-card " +
       (m.sex === "male" ? "male " : m.sex === "female" ? "female " : "") +
       (m.collapseUp ? "collapse-up" : "");
 
+    // Гишүүний id-г dataset-д хадгална
     this.dataset.id = m.id;
 
-    // ===== TEMPLATE =====
+    // Картын HTML бүтэц
     this.innerHTML = `
-      <!-- COLLAPSE -->
-      <button class="node-btn node-btn-up" aria-label="Дээш нугалах">
+      <!-- Дээш нугалах -->
+      <button class="node-btn node-btn-up">
         <span class="triangle-up"></span>
       </button>
 
-      <!-- ADD -->
-      <button class="node-btn node-btn-add" aria-label="Нэмэх"></button>
+      <!-- Нэмэх -->
+      <button class="node-btn node-btn-add"></button>
 
-      <!-- ADD MENU -->
+      <!-- Нэмэх цэс -->
       <div class="add-menu hidden">
         <button class="add-pill">Эцэг нэмэх</button>
         <button class="add-pill">Эх нэмэх</button>
@@ -47,7 +53,7 @@ class FamilyCard extends HTMLElement {
         <button class="add-pill">Устгах</button>
       </div>
 
-      <!-- AVATAR -->
+      <!-- Аватар -->
       <div class="card-avatar">
         <div class="avatar-circle">
           ${
@@ -58,18 +64,17 @@ class FamilyCard extends HTMLElement {
         </div>
       </div>
 
-      <!-- NAME -->
+      <!-- Нэр, нас -->
       <div class="card-name">
         <div class="fullname">${m.name || "Нэргүй"}</div>
         ${m.age ? `<div class="card-age">${m.age} настай</div>` : ""}
       </div>
     `;
 
-    // ===== EVENTS =====
     const btnUp = this.querySelector(".node-btn-up");
     const btnAdd = this.querySelector(".node-btn-add");
 
-    // 🔺 COLLAPSE
+    // Дээш нугалах үйлдэл
     btnUp?.addEventListener("click", (e) => {
       e.stopPropagation();
       m.collapseUp = !m.collapseUp;
@@ -77,7 +82,7 @@ class FamilyCard extends HTMLElement {
       window.saveTreeToDB?.();
     });
 
-    // ➕ ADD (menu-г family-tree.js удирдана)
+    // Нэмэх товчны event
     btnAdd?.addEventListener("click", (e) => {
       e.stopPropagation();
       this.dispatchEvent(
@@ -90,4 +95,5 @@ class FamilyCard extends HTMLElement {
   }
 }
 
+// Custom element бүртгэх
 customElements.define("family-card", FamilyCard);

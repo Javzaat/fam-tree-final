@@ -1,5 +1,5 @@
-import { 
-  initializeApp 
+import {
+  initializeApp
 } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
 
 import {
@@ -11,8 +11,7 @@ import {
   signOut
 } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
 
-
-// ================== FIREBASE CONFIG ==================
+// Firebase-ийн тохиргоо
 const firebaseConfig = {
   apiKey: "AIzaSyC3Mu5W0Aol7DvtQ28mdtnD1qWt426ea9U",
   authDomain: "undes-27404.firebaseapp.com",
@@ -22,24 +21,23 @@ const firebaseConfig = {
   appId: "1:392425028546:web:6f24b527752361db68b45b",
 };
 
+// Firebase app, auth-оо үүсгээд global-д гаргана
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 window.auth = auth;
 
-
-
-// ================== HEADER BUTTONS ==================
+// Header дээрх UI элементүүд
 const welcomeText = document.getElementById("welcome-text");
 const btnMyTree = document.getElementById("btn-my-tree");
 const btnLogin = document.getElementById("btn-open-auth");
 const btnLogout = document.getElementById("btn-logout");
 
-
-// ================== AUTH MODAL ==================
+// Нэвтрэх/бүртгүүлэх modal
 const modal = document.getElementById("auth-modal");
 const back = document.getElementById("auth-backdrop");
 const closeBtn = document.getElementById("auth-close");
 
+// Auth modal нээх
 function openModal() {
   modal.hidden = false;
   back.hidden = false;
@@ -50,6 +48,7 @@ function openModal() {
   }, 10);
 }
 
+// Auth modal хаах
 function closeModal() {
   modal.classList.remove("show");
   back.classList.remove("show");
@@ -64,6 +63,7 @@ btnLogin?.addEventListener("click", openModal);
 closeBtn?.addEventListener("click", closeModal);
 back?.addEventListener("click", closeModal);
 
+// Нэвтэрсэн/гараагүй үед header UI-г тохируулна
 function setLoggedInUI(user) {
   if (user) {
     const name = user.displayName || user.email.split("@")[0];
@@ -72,23 +72,21 @@ function setLoggedInUI(user) {
       welcomeText.textContent = `Тавтай морилно уу, ${name}`;
       welcomeText.hidden = false;
     }
-    if (btnMyTree) btnMyTree.hidden = false;  // ✅ login үед гарна
+    if (btnMyTree) btnMyTree.hidden = false;
     if (btnLogout) btnLogout.hidden = false;
-    if (btnLogin)  btnLogin.hidden  = true;
-
+    if (btnLogin) btnLogin.hidden = true;
   } else {
     if (welcomeText) {
       welcomeText.textContent = "";
       welcomeText.hidden = true;
     }
-    if (btnMyTree) btnMyTree.hidden = true;   // ✅ logout үед алга
+    if (btnMyTree) btnMyTree.hidden = true;
     if (btnLogout) btnLogout.hidden = true;
-    if (btnLogin)  btnLogin.hidden  = false;
+    if (btnLogin) btnLogin.hidden = false;
   }
 }
 
-
-// ================== TABS ==================
+// Signin / Signup tab солих
 const formSignin = document.getElementById("form-signin");
 const formSignup = document.getElementById("form-signup");
 const tabBtns = document.querySelectorAll(".tab-btn");
@@ -108,8 +106,7 @@ tabBtns.forEach((t) =>
   })
 );
 
-
-// ======================= SUCCESS TOAST =======================
+// Toast мэдэгдэл (амжилт/алдаа харуулах)
 const toastBox = document.getElementById("toast-box");
 const toastText = document.getElementById("toast-text");
 const toastBackdrop = document.getElementById("toast-backdrop");
@@ -136,8 +133,7 @@ function showToast(msg) {
   }, 2000);
 }
 
-
-// ======================= SIGNUP =======================
+// Бүртгэл (signup)
 formSignup.addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -149,23 +145,19 @@ formSignup.addEventListener("submit", async (e) => {
     const cred = await createUserWithEmailAndPassword(auth, email, pass);
     await updateProfile(cred.user, { displayName: name });
 
-    // logout after signup (no auto-login)
+    // Бүртгэсний дараа автоматаар нэвтрүүлэхгүй (гараад signin руу шилжинэ)
     await signOut(auth);
 
     closeModal();
 
-    // switch to SIGN-IN tab
     document.querySelector('[data-tab="signin"]').click();
-
     showToast("Амжилттай бүртгэгдлээ! Одоо нэвтэрнэ үү.");
-
   } catch (err) {
     showToast(err.message);
   }
 });
 
-
-// ======================= SIGNIN =======================
+// Нэвтрэх (signin)
 formSignin.addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -177,15 +169,12 @@ formSignin.addEventListener("submit", async (e) => {
 
     closeModal();
     showToast("Тавтай морилно уу!");
-
   } catch (err) {
     showToast(err.message);
   }
 });
 
-
-
-// ======================= CUSTOM LOGOUT POPUP =======================
+// Гарах үед баталгаажуулах popup
 const logoutModal = document.getElementById("logout-modal");
 const logoutBackdrop = document.getElementById("logout-backdrop");
 const logoutCancel = document.getElementById("logout-cancel");
@@ -214,9 +203,9 @@ function closeLogoutPopup() {
 logoutCancel?.addEventListener("click", closeLogoutPopup);
 logoutBackdrop?.addEventListener("click", closeLogoutPopup);
 
+// Logout баталгаажуулсан үед (шаардлагатай бол модоо хадгалаад) гарна
 logoutConfirm?.addEventListener("click", async () => {
   try {
-    // ✅ Хэрвээ family-tree.html дээр байвал logout-оос өмнө save хийнэ
     if (typeof window.saveTreeNow === "function") {
       await window.saveTreeNow();
     }
@@ -229,23 +218,19 @@ logoutConfirm?.addEventListener("click", async () => {
   showToast("Амжилттай гарлаа");
 });
 
-
-
-// ======================= AUTH STATE =======================
+// Auth-ийн төлөв өөрчлөгдөх бүрт UI шинэчилнэ
 onAuthStateChanged(auth, (user) => {
   setLoggedInUI(user);
 });
 
-
-
-// ======================= FAMILY TREE ROUTING =======================
-const btnCreateTree = document.querySelector(".go-tree"); // main CTA buttons
+// Мод руу орох үед login шаардлагатай эсэхийг шалгана
+const btnCreateTree = document.querySelector(".go-tree");
 const btnPaymentStart = document.getElementById("btn-payment-start");
 
 function requireLogin() {
   openModal();
 
-  // switch to sign-in tab
+  // Sign-in табыг идэвхжүүлнэ
   formSignin.classList.remove("hidden");
   formSignup.classList.add("hidden");
 
@@ -264,4 +249,3 @@ document.querySelectorAll(".go-tree").forEach((btn) => {
     goToFamilyTree();
   });
 });
-
